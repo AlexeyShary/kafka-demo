@@ -1,0 +1,21 @@
+server:
+  port: 8082
+
+spring:
+  kafka:
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.openschool.common.dto
+    bootstrap-servers: ${KAFKA_URL:localhost:9092}
+  jpa:
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: always
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:8083/kafkademo}
+    username: ${DATABASE_USERNAME:kafkademo}
+    password: ${DATABASE_PASSWORD:kafkademo}
